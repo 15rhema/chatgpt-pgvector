@@ -16,6 +16,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "sourceMap": true,
+    "outDir": "out",
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
