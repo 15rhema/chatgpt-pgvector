@@ -1,4 +1,3 @@
-import { Document } from 'next/document';
 import { NextApiRequest, NextApiResponse } from "next";
 import { supabaseClient } from "@/lib/embeddings-supabase";
 import * as cheerio from "cheerio";
