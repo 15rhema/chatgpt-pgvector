@@ -7,8 +7,7 @@ import { BLOCKED_PAGES } from "next/dist/shared/lib/constants";
 import { Blob } from 'fetch-blob';
 import  tmp  from 'tmp-promise';
 import fs from 'fs/promises'
-import pdfjsLib from 'pdfjs-dist';
-import { getDocument } from "pdfjs-dist";
+import { getDocument } from "pdfjs-dist/legacy/build/pdf";
 // embedding doc sizes
 const docSize: number = 1000;
 
@@ -79,8 +78,8 @@ export default async function handle(
     .json({ success: false, message: "Method not allowed" });
 }
 
-async function getPdfText(data: string) {
-    let doc = await pdfjsLib.getDocument({data}).promise;
+async function getPdfText(url: string) {
+    let doc = await getDocument(url).promise;
     let pageTexts = Array.from({length: doc.numPages}, async (v,i) => {
         return (await (await doc.getPage(i+1)).getTextContent()).items.map(token => token.str).join('');
     });
