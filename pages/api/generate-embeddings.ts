@@ -80,7 +80,7 @@ export default async function handle(
 async function getPdfText(url: string) {
     let doc = await getDocument(url).promise;
     let pageTexts = Array.from({length: doc.numPages}, async (v,i) => {
-        return (await (await doc.getPage(i+1)).getTextContent()).items.map(token => token.str).join('');
+        return (await (await doc.getPage(i+1)).getTextContent()).items.map(token => token).join('');
     });
     return (await Promise.all(pageTexts)).join('');
 }
